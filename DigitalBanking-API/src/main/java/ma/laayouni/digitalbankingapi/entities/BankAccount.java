@@ -19,16 +19,14 @@ import java.util.List;
 @DiscriminatorColumn(name = "TYPE", length = 4)// string default
 public abstract class BankAccount {
     @Id
-    private String id;
+    private String id;//id will be generated with UUID
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createdAt;
     private double balance;
     @Enumerated(EnumType.STRING)
     private AccountStatus status;
-    private String currency;
     @ManyToOne
     private Customer customer;
-
     @OneToMany(mappedBy = "bankAccount",fetch = FetchType.LAZY)
     private List<AccountOperation> accountOperationList;
 
