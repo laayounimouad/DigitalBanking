@@ -25,8 +25,10 @@ public abstract class BankAccount {
     private double balance;
     @Enumerated(EnumType.STRING)
     private AccountStatus status;
+    //private String currency;
     @ManyToOne
     private Customer customer;
+
     @OneToMany(mappedBy = "bankAccount",fetch = FetchType.LAZY)
     private List<AccountOperation> accountOperationList;
 
