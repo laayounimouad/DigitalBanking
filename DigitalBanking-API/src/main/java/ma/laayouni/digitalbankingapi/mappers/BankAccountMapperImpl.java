@@ -77,4 +77,10 @@ public class BankAccountMapperImpl {
         }
         return bankAccountDto;
     }
+
+    public AccountOperation accountOperationFromDTO(AccountOperationDto accountOperationDto){
+        AccountOperation accountOperation = new AccountOperation();
+        BeanUtils.copyProperties(accountOperationDto, accountOperation);
+        return accountOperation;
+    }
 }

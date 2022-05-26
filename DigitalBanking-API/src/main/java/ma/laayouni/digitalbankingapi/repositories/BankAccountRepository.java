@@ -7,5 +7,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface BankAccountRepository extends JpaRepository<BankAccount, String> {
-    Page<Customer> findCustomersByNameContains(String keyword, Pageable pageable);
+    //Page<Customer> findCustomersByNameContains(String keyword, Pageable pageable);
+
 }

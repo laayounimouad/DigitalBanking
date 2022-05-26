@@ -32,7 +32,7 @@ import java.util.stream.Collectors;
 public class BankAccountServiceImp implements BankAccountService {
     private CustomerRepository customerRepository;
     private BankAccountRepository bankAccountRepository;
-    private AccountOperationRepository accountOperationRepository;
+    //private AccountOperationRepository accountOperationRepository;
     private BankAccountMapperImpl mapper;
 
     @Override

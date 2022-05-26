@@ -18,7 +18,6 @@ import java.util.List;
 public class BankAccountRestController {
     BankAccountService bankAccountService;
     AccountOperationService accountOperationService;
-
     // get all accounts
     @GetMapping("/accounts")
     public List<BankAccountDto> listAccounts(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "5") int size){
