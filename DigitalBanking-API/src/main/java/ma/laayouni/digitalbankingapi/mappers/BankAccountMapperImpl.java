@@ -1,14 +1,8 @@
 package ma.laayouni.digitalbankingapi.mappers;
 
 
-import ma.laayouni.digitalbankingapi.dtos.AccountOperationDto;
-import ma.laayouni.digitalbankingapi.dtos.CurrentAccountDto;
-import ma.laayouni.digitalbankingapi.dtos.CustomerDto;
-import ma.laayouni.digitalbankingapi.dtos.SavingAccountDto;
-import ma.laayouni.digitalbankingapi.entities.AccountOperation;
-import ma.laayouni.digitalbankingapi.entities.CurrentAccount;
-import ma.laayouni.digitalbankingapi.entities.Customer;
-import ma.laayouni.digitalbankingapi.entities.SavingAccount;
+import ma.laayouni.digitalbankingapi.dtos.*;
+import ma.laayouni.digitalbankingapi.entities.*;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 @Service
@@ -58,5 +52,29 @@ public class BankAccountMapperImpl {
         AccountOperationDto accountOperationDto=new AccountOperationDto();
         BeanUtils.copyProperties(accountOperation,accountOperationDto);
         return accountOperationDto;
+    }
+
+    public BankAccount bankAccountFromDTO(BankAccountDto bankAccountDto) {
+        BankAccount bankAccount = null;
+        if (bankAccountDto instanceof  SavingAccountDto){
+            bankAccount = fromSavingBankAccountDTO((SavingAccountDto) bankAccountDto);
+        }
+        else if(bankAccountDto instanceof  CurrentAccountDto){
+            bankAccount = fromCurrentBankAccountDTO((CurrentAccountDto) bankAccountDto);
+        }
+        return bankAccount;
+    }
+    public BankAccountDto dtoFromBankAccount(BankAccount bankAccount) {
+        BankAccountDto bankAccountDto = null;
+        if(bankAccount instanceof SavingAccount){
+            bankAccountDto = fromSavingBankAccount((SavingAccount) bankAccount);
+            bankAccountDto.setType("SAVING_ACCOUNT");
+        }
+        else if(bankAccount instanceof CurrentAccount){
+            bankAccountDto = fromCurrentBankAccount((CurrentAccount) bankAccount);
+            bankAccountDto.setType("CURRENT_ACCOUNT");
+
+        }
+        return bankAccountDto;
     }
 }
