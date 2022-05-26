@@ -13,6 +13,7 @@ import ma.laayouni.digitalbankingapi.services.interfaces.CustomerService;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +23,7 @@ import java.util.stream.Collectors;
 @Transactional
 @AllArgsConstructor
 @Slf4j
+@CrossOrigin("*")
 public class CustomerServiceImp implements CustomerService {
     private CustomerRepository customerRepository;
     private BankAccountRepository bankAccountRepository;
