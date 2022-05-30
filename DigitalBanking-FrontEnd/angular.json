@@ -26,10 +26,16 @@
               "src/favicon.ico",
               "src/assets"
             ],
+
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/@coreui/icons/css/all.css",
+              "node_modules/@coreui/coreui/dist/css/coreui.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.js",
+              "node_modules/@coreui/coreui/dist/js/coreui.js"
+            ]
           },
           "configurations": {
             "production": {

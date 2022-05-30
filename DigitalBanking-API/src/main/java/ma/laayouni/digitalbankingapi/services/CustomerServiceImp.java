@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -34,6 +35,7 @@ public class CustomerServiceImp implements CustomerService {
     public CustomerDto saveCustomer(CustomerDto customerDto) throws CustomerNotFoundException {
         log.info("Saving new Customer");
         Customer customer=mapper.fromCustomerDTO(customerDto);
+        customer.setId(UUID.randomUUID().toString());
         Customer savedCustomer = customerRepository.save(customer);
         return mapper.fromCustomer(savedCustomer);
     }
